@@ -37,21 +37,21 @@
                                 class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil"
                                     aria-hidden="true"></span></button>&nbsp;<button
                                 class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove"
-                                    aria-hidden="true"></span></button>&nbsp;<button
+                                    aria-hidden="true"></span></button>&nbsp;<button a href=""
                                 class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search"
                                     aria-hidden="true"></span>></button></span></li>
                     <li class="list-group-item">Second item<span class="pull-right"><button
                                 class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil"
                                     aria-hidden="true"></span></button>&nbsp;<button
                                 class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove"
-                                    aria-hidden="true"></span></button>&nbsp;<button
+                                    aria-hidden="true"></span></button>&nbsp;<button a href=""
                                 class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search"
                                     aria-hidden="true"></span>></button></span></li>
                     <li class="list-group-item">Third item<span class="pull-right"><button
                                 class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil"
                                     aria-hidden="true"></span></button>&nbsp;<button
                                 class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove"
-                                    aria-hidden="true"></span></button>&nbsp;<button
+                                    aria-hidden="true"></span></button>&nbsp;<button a href=""
                                 class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search"
                                     aria-hidden="true"></span>></button></span></li>
                 </ul>
@@ -238,8 +238,8 @@
                     var index = $(this).closest("li").index();
                     currentIndex = index;
                     var ahref = newsList[index].href;
-                     alert(ahref);
-                    //$(".urlItem").href=ahref;
+                    // alert(ahref);
+                    $(".urlItem").attr("href",ahref);
                 });
             }
 
