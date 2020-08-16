@@ -248,6 +248,7 @@
 
             $("#newItem").on("click", function () {
                 // alert("test");
+                currentIndex = -1;
                 $("#newsModal").modal({ backdrop: "static" });           // 彈出對話盒，並使用backdrop:"static"讓使用者不能點選空白處離開
             });
 
@@ -283,8 +284,7 @@
                         loadRefresh();
                     });
                     showToast("Hint","News已編輯");
-                }
-                currentIndex = -1;                                  // 更新完後將currentIndex改回-1
+                }                
                 $("#newsModal").modal("hide");                      // modal("hide") 將對話和隱藏
             });
 
