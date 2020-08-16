@@ -190,6 +190,31 @@
             })
 
 
+            $("#newItem").on("click",function(){
+                // alert("test");
+                $("#newsModal").modal( {backdrop:"static"} );           // 彈出對話盒，並使用backdrop:"static"讓使用者不能點選空白處離開
+            });
+
+            // 當okButton按下時
+            $("#okButton").on("click",function(){
+                // alert("test");
+                $("#newsModal").modal("hide");                      // modal("hide") 將對話和隱藏
+                var item= {
+                    title:  $("#titleTextBox").val(),               // 讀取textField的資料並暫存
+                    nymd:  $("#ymdTextBox").val()
+                }
+                $.ajax({
+                    type: "post",                                   // 用post傳遞資料
+                    url: "/home/news",
+                    contentType: "Application/json",                // 傳遞格式為JSON檔
+                    data: JSON.stringify(item)
+                }).then(function(e){
+                    refreshUI();
+                })
+                showToast("Hint","News已建立");                     // 用toast提示
+            });
+            
+
             // 加toast
 
 
