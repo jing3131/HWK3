@@ -9,3 +9,5 @@
 5. 當okButton按下時，將文字輸入方塊的內容用.ajax type:"post"方法傳進資料庫
 5. .editItem按下，將資料撈出放入titleTextBox、ymdTextBox
 6. 如果currwntIndex != -1 則使用.ajax type:"put"修改資料
+7. 建立超連結button
+8. 更改app.js

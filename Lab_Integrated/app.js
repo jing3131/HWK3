@@ -69,10 +69,11 @@ app.get("/home/news", function (request, response) {
 app.post("/home/news", function (request, response) {
 
 	connection.query(
-		"insert into news set title = ?, ymd = ? ", 
+		"insert into news set title = ?, ymd = ? , href = ?", 
 			[
 				request.body.title, 
-				request.body.ymd
+				request.body.ymd,
+				request.body.href
 			]);
 	response.send("row inserted.");
     
@@ -82,11 +83,12 @@ app.post("/home/news", function (request, response) {
 app.put("/home/news", function (request, response) {
 
 	connection.query(
-		"update news set title = ?, ymd = ? where newsId = " 
+		"update news set title = ?, ymd = ?, href = ? where newsId = " 
 		    + request.body.newsId, 
 			[
 				request.body.title, 
-				request.body.ymd
+				request.body.ymd,
+				request.body.href
 			]);
 	response.send("row updated.");
     

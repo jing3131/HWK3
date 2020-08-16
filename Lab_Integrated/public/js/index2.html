@@ -33,27 +33,21 @@
                 <h2>最新消息<span class="pull-right"><button id="newItem" class="btn btn-success btn-sm"><span
                                 class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></span></h2>
                 <ul id="latestNews" class="list-group">
-                    <li class="list-group-item">First item<span class="pull-right"><button
+                    <li class="list-group-item"><a href="https:///www.google.com">First item</a><span class="pull-right"><button
                                 class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil"
                                     aria-hidden="true"></span></button>&nbsp;<button
                                 class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove"
-                                    aria-hidden="true"></span></button>&nbsp;<button
-                                class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search"
-                                    aria-hidden="true"></span>></button></span></li>
-                    <li class="list-group-item">Second item<span class="pull-right"><button
+                                    aria-hidden="true"></span></button></span></li>
+                    <li class="list-group-item"><a href="https://www.yahoo.com.tw">Second item</a><span class="pull-right"><button
                                 class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil"
                                     aria-hidden="true"></span></button>&nbsp;<button
                                 class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove"
-                                    aria-hidden="true"></span></button>&nbsp;<button
-                                class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search"
-                                    aria-hidden="true"></span>></button></span></li>
-                    <li class="list-group-item">Third item<span class="pull-right"><button
+                                    aria-hidden="true"></span></button></span></li>
+                    <li class="list-group-item"><a href="https://www.youtube.com">Third item</a><span class="pull-right"><button
                                 class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil"
                                     aria-hidden="true"></span></button>&nbsp;<button
                                 class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove"
-                                    aria-hidden="true"></span></button>&nbsp;<button
-                                class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search"
-                                    aria-hidden="true"></span>></button></span></li>
+                                    aria-hidden="true"></span></button></span></li>
                 </ul>
             </div>
 
@@ -105,7 +99,7 @@
                                 連結
                             </label>
                             <input type="text" id="urlTextBox" class="form-control"
-                                placeholder="https://www.google.com">
+                                placeholder="https://google.com">
                         </div>
 
 
@@ -168,11 +162,11 @@
 
             var newsList =
                 [
-                    { ymd: "2017-05-01", title: "Item 1", href: "https://www.google.com"},
-                    { ymd: "2017-05-01", title: "Item 2", href: "https://www.google1.com"},
-                    { ymd: "2017-05-02", title: "Item 3", href: "https://www.google2.com"},
-                    { ymd: "2017-05-03", title: "Item 4", href: "https://www.google3.com"},
-                    { ymd: "2017-05-04", title: "Item 5", href: "https://www.google4.com"}
+                    { ymd: "2017-05-01", title: "Item 1" , url: "https://www.google.com"},
+                    { ymd: "2017-05-01", title: "Item 2" , url: "https://www.yahoo.com.tw"},
+                    { ymd: "2017-05-02", title: "Item 3" , url: "https://www.youtube.com"},
+                    { ymd: "2017-05-03", title: "Item 4" , url: "https://www.facebook.com"},
+                    { ymd: "2017-05-04", title: "Item 5" ,url: "https://discord.com/"}
                 ];
 
             // 練習與任務:
@@ -204,7 +198,7 @@
                     var li = $("<li></li>")
                         .addClass("list-group-item")                // 新增li樣式，並將用span包住的兩個button放到最後面，最後將newsList的內容和套用的樣式放入li中
                         .text(newsItems)
-                        .append('<span class="pull-right"><button class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>&nbsp;<button class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>&nbsp;<button class="btn btn-link btn-xs urlItem"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>></button></span>')
+                        .append('<span class="pull-right"><button class="btn btn-info btn-xs editItem"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>&nbsp;<button class="btn btn-danger btn-xs deleteItem"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></span>')
                     li.appendTo("#latestNews");
                 }
 
@@ -229,17 +223,7 @@
                     currentIndex = index;                                   // 當currentIndex = index，okButton按下修改資料
                     $("#titleTextBox").val(newsList[index].title);
                     $("#ymdTextBox").val(newsList[index].ymd);
-                    $("#urlTextBox").val(newsList[index].href);
                     $("#newsModal").modal({backdrop: "static"});
-                });
-
-                $(".urlItem").on("click",function(){
-                    // alert("test");
-                    var index = $(this).closest("li").index();
-                    currentIndex = index;
-                    var ahref = newsList[index].href;
-                     alert(ahref);
-                    //$(".urlItem").href=ahref;
                 });
             }
 
@@ -257,8 +241,7 @@
                 if (currentIndex == -1) {                               // 當currentIndex = -1 新增Item                   
                     var item = {
                         title: $("#titleTextBox").val(),               // 讀取textField的資料並暫存
-                        ymd: $("#ymdTextBox").val(),
-                        href: $("#urlTextBox").val(),
+                        ymd: $("#ymdTextBox").val()
                     }
                     $.ajax({
                         type: "post",                                   // 用post傳遞資料
@@ -274,7 +257,6 @@
                 else {                                                  // index != -1
                     newsList[currentIndex].title = $("#titleTextBox").val();
                     newsList[currentIndex].ymd = $("#ymdTextBox").val();
-                    newsList[currentIndex].herf = $("#urlTextBox").val();
                     $.ajax({
                         type: "put",
                         url: "/home/news",
@@ -284,7 +266,6 @@
                     });
                     showToast("Hint","News已編輯");
                 }
-                currentIndex = -1;                                  // 更新完後將currentIndex改回-1
                 $("#newsModal").modal("hide");                      // modal("hide") 將對話和隱藏
             });
 
